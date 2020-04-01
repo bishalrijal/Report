@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+</head>
+<style>
+    .chart{
+        width: 500px;
+        height: 600px;
+    }
+</style>
+<body>
+    <button onclick="getUserData1()">Load Data</button>
+    <div class="chart">
+        <canvas id="myChart" ></canvas>
+        <br>
+        <br>
+        <br>
+        <canvas id="myChart2" ></canvas>
+    </div>
+    
+</body>
+</html>
+
+
+
+<script>
+  function getUserData1() {  
+    let label = []
+    let data = []
+  axios.get('http://127.0.0.1:5000/getdata')
+    .then(function (response) {
+        var obj = response.data
+        var ctx = document.getElementById('myChart').getContext('2d');
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'line',
+    
+        // The data for our dataset
+        data: {
+            labels: Object.keys(obj.count),
+            datasets: [{
+                label: 'User Count line Chart',
+                borderColor: 'rgb(255, 99, 132)',
+                data: Object.values(obj.count)
+            }]
+        },
+    
+        // Configuration options go here
+        options: {}
+    });
+    var ctx = document.getElementById('myChart2').getContext('2d');
+    var chart = new Chart(ctx, {
+        // The type of chart we want to create
+        type: 'bar',
+    
+        // The data for our dataset
+        data: {
+            labels: Object.keys(obj.count),
+            datasets: [{
+                label: 'User Count Bar Chart',
+                backgroundColor: 'rgb(255, 99, 132)',
+                borderColor: 'rgb(255, 99, 132)',
+                data: Object.values(obj.count)
+            }]
+        },
+    
+        // Configuration options go here
+        options: {}
+    });
+        return {
+            label : Object.keys(obj.count),
+            data : Object.values(obj.count)
+        }
+    })
+    .catch(function (error) {
+      console.log(error)
+    });   
+}
+
+    
+</script>

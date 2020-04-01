@@ -1,0 +1,10 @@
+,id,username,email,is_active,created_at
+0,1,admin user,admin@user.com,1,2020-01-20 09:16:36
+1,2,bis,admin@admin.com,1,2020-02-02 15:41:09
+2,3,bishalty,72bct615@wrc.edu.np,1,2020-02-03 16:27:52
+3,8,vis,bis@vis.com,1,2020-02-12 17:33:21
+4,9,bis1,bis@bism.com,1,2020-02-12 17:39:34
+5,10,qwer,qwe@qw.com,1,2020-02-12 17:42:45
+6,12,qwert,qwe@qwe.com,1,2020-02-18 14:38:47
+7,150,bis150,admin@adminl.com,1,2020-03-30 00:00:00
+8,151,bis151,admin@admin12.com,1,2020-03-30 00:00:00
