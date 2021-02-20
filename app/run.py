@@ -1,13 +1,13 @@
-from flask import Flask, render_template, jsonify
+from flask import  render_template, jsonify
 from flask_restful import Resource, Api
 import mainapp.scheduler as scheduler
 import mysql.connector
-
+from app import app
+from database import connection
 import pandas as pd
 import json
 from flask_cors import CORS
 
-app = Flask(__name__)
 CORS(app, supports_credentials=True)
 api = Api(app)
 class UserData(Resource):
@@ -18,16 +18,15 @@ class UserData(Resource):
         df['count'] = df['is_active']
         df = df[['created_at','count']]
         df = df.groupby(['created_at']).count()
-        df = df.to_dict()
-
-        
+        df = df.to_dict()        
         return jsonify(df)
 
 api.add_resource(UserData, '/getdata')
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    from utils.menu import menu
+    return render_template('sidebar.html',menu = menu)
 
 
 if __name__ == '__main__':

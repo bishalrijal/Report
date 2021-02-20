@@ -1,6 +1,6 @@
 SOURCE_DB = {
     'name':'root',
-    'password':'',
+    'password':'admin123',
     'host': 'localhost',
     'port': 3306,
     'database': 'butwal_web'

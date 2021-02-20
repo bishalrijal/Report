@@ -20,7 +20,7 @@ def cron_job():
     scheduler.start()
     scheduler.add_job(
         func=print_time,
-        trigger=IntervalTrigger(seconds=15),
+        trigger=IntervalTrigger(seconds=150000),
         id='printing_time_job',
         name='Print time every 2 seconds',
         replace_existing=True)
