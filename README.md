@@ -2,7 +2,7 @@
 
 clone the repository using following command
 ```bash
-git cline https://github.com/bishalrijal/Report.git
+git clone https://github.com/bishalrijal/Report.git
 ```
 
 install  the requirements in the directory( virtual environment is recommanded)
